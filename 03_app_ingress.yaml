@@ -8,7 +8,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/server-snippet: |
         location ~* "^/admin" {
-            allow all;
+            deny all;
         }
 spec:
   rules:
