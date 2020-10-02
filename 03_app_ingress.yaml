@@ -8,19 +8,27 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/server-snippet: |
         location ~* "^/admin" {
-            deny all;
+            allow all;
         }
 spec:
   rules:
     - host: app.k8s.domain.com
       http:
         paths:
-        - path: /
+        - path: /one
+          backend:
+            serviceName: app
+            servicePort: 5000
+        - path: /two
+          backend:
+            serviceName: app
+            servicePort: 5000
+        - path: /three
           backend:
             serviceName: app
             servicePort: 5000
         - path: /admin
           backend:
-            serviceName: app
+            serviceName: app2
             servicePort: 5000
 
