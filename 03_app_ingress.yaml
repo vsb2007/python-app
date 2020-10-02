@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: app
 spec:
   rules:
-    - host: app.k8s.domain.com
+    - host: app.k8s.swordfishsecurity.com
       http:
         paths:
         - path: /
@@ -18,7 +18,7 @@ spec:
           backend:
             serviceName: app2
             servicePort: 5000
-        - path: /three
+        - path: /two
           backend:
             serviceName: app
             servicePort: 5000
