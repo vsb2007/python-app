@@ -12,7 +12,7 @@ metadata:
         }
 spec:
   rules:
-    - host: app.k8s.swordfishsecurity.com
+    - host: app.k8s.domain.com
       http:
         paths:
         - path: /
