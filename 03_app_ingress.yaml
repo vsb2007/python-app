@@ -5,25 +5,26 @@ metadata:
   namespace: app
   labels:
     app.kubernetes.io/name: app
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: app.k8s.swordfishsecurity.com
+    - host: app.k8s.domain.com
       http:
         paths:
+        - path: /admin
+          backend:
+            serviceName: app2
+            servicePort: 5000
+        - path: /(one|two)
+          backend:
+            serviceName: app
+            servicePort: 5000
+        - path: /(.+)
+          backend:
+            serviceName: app2
+            servicePort: 5000
         - path: /
           backend:
             serviceName: app
             servicePort: 5000
-        - path: /[.]*
-          backend:
-            serviceName: app2
-            servicePort: 5000
-        - path: /two
-          backend:
-            serviceName: app
-            servicePort: 5000
-        - path: /admin
-          backend:
-            serviceName: app
-            servicePort: 5000
-
